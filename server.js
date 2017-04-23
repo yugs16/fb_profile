@@ -22,7 +22,7 @@ if(env === 'development'){
 }
 else if(env === 'production'){
     database=config.database_prod;
-    configAuth.facebookAuth.callbackURL = 'https://yugalfbauth.herokuapp.com/profile/auth/facebook/callback';    
+    configAuth.facebookAuth.callbackURL = 'https://yugalfbauth.herokuapp.com/auth/facebook/callback';    
 }
 
 mongoose.connect(database,function(err){
