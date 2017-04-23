@@ -10,9 +10,18 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var config = require('./config');
 
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 config.path = __dirname;
 
-mongoose.connect(config.database,function(err){
+var database;
+if(env === 'development'){
+    console.log("here at local");
+    database = config.database;
+}
+else if(env === 'production'){
+    database=config.database_prod;
+}
+mongoose.connect(database,function(err){
     if(err){
         console.log("error connecting")
         console.log(err);
