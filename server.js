@@ -8,15 +8,14 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var config = require('./config');
-var configAuth = require('./config/auth');
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config = require('./config');
 config.path = __dirname;
 
+var configAuth = require('./config/auth');
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var database;
 if(env === 'development'){
-    console.log("here at local");
     database = config.database;
     configAuth.facebookAuth.callbackURL = 'http://localhost:8000/auth/facebook/callback';
 }
@@ -27,14 +26,13 @@ else if(env === 'production'){
 
 mongoose.connect(database,function(err){
     if(err){
-        console.log("error connecting")
+        console.log("Error Connecting")
         console.log(err);
     }
     else{
         console.log('Connected to the Database');
     }
 });
-
 
 app.use(bodyParser.urlencoded({
 	extended: true
