@@ -9,6 +9,7 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var config = require('./config');
+var configAuth = require('./config/auth');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 config.path = __dirname;
@@ -17,10 +18,13 @@ var database;
 if(env === 'development'){
     console.log("here at local");
     database = config.database;
+    configAuth.facebookAuth.callbackURL = 'http://localhost:8000/auth/facebook/callback';
 }
 else if(env === 'production'){
     database=config.database_prod;
+    configAuth.facebookAuth.callbackURL = 'https://yugalfbauth.herokuapp.com/profile/auth/facebook/callback';    
 }
+
 mongoose.connect(database,function(err){
     if(err){
         console.log("error connecting")

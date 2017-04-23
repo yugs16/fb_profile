@@ -1,12 +1,11 @@
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../app/models/user');
-var configAuth = require('./auth');
 
+var configAuth = require('./auth');
 module.exports = function(passport) {
 
     passport.use(new FacebookStrategy({
-
         // pull in our app id and secret from our auth.js file
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
@@ -17,7 +16,6 @@ module.exports = function(passport) {
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
 
-        // asynchronous
         //console.log("Came in passport");
       //  console.log(profile);
 
