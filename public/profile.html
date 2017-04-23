@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style type="text/css">
+    	body{
+    		text-align: center;
+    		font-family: monospace;
+    		padding-top:80px;
+    	}
+
+    	.main img{
+    		width: 193px;
+    	}
+
+    </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		// body...
+		console.log(window.location.hash);
+		 if (window.location.hash == '#_=_') {
+	     
+	      window.location.hash = '';
+	    }
+		$.ajax({
+			method:"POST",
+	        url:'/getdata',
+	        success:function(res){
+	           //console.log(res);
+	           $("#main img").attr('src',res.facebook.profile_pic);
+	           $("#main h3").text(res.facebook.name);
+	           $("#main p").text('Your loggedIn Count to our app is:'+res.facebook.login_cnt);
+	        },
+	        error:function(err){
+	            console.log(err);
+	        }
+		})
+	})
+</script>
+
+<div class="main" id="main">
+	<h2>
+		Profile Page
+	</h2>
+	<img src=""/>
+	<h3></h3>
+	<p></p>
+</div>
+
+
+<a href="/logout" class="btn btn-primary"><span class="fa fa-reply"></span> Logout</a>
+
+</body>
+</html>
