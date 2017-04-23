@@ -6,6 +6,6 @@ module.exports = {
     'facebookAuth' : {
         'clientID'      : '1898669750354279', 
         'clientSecret'  : 'f747fe5c1d6e20b88ce92516088487c7', 
-        'callbackURL'   : 'http://localhost:8000/auth/facebook/callback'
-    }
+        'callbackURL'   : 'https://yugalfbauth.herokuapp.com/auth/facebook/callback'
+    },
 };
