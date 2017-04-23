@@ -17,7 +17,7 @@ module.exports = function(passport) {
     function(token, refreshToken, profile, done) {
 
         //console.log("Came in passport");
-      //  console.log(profile);
+        //console.log(profile);
 
             // find the user in the database based on their facebook id
             User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
@@ -39,8 +39,15 @@ module.exports = function(passport) {
 
                     var newUser = new User();
                     newUser.facebook.id    = profile.id;                  
-                    newUser.facebook.profile_pic=profile.photos[0].value;
-                    newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                    newUser.facebook.profile_pic = profile.photos[0].value;
+                    newUser.facebook.email = profile.emails[0].value;
+                    var middleName = profile.name.middleName;
+                    if(middleName=== undefined || middleName === null){
+                        middleName = '';
+                    }
+                    else
+                        middleName = middleName+' ';
+                    newUser.facebook.name  = profile.name.givenName + ' ' +middleName+ profile.name.familyName;
                     newUser.save(function(err) {
                         if (err)
                             throw err;

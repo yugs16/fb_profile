@@ -16,4 +16,3 @@ and then follow the run the following commands in the terminal.
 
 The app is also uploaded on Heroku server. Link: https://yugalfbauth.herokuapp.com/
 
-
