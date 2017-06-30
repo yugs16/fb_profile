@@ -7,8 +7,8 @@ A simple app shows some fb profile details and login count. (Based on NodeJS, Ex
 	node @v6.10.0
 	mongo @v3.0.14
 ### Installation and run
-First of all cole the repo from the link: https://github.com/lovingyugs/fb_profile.git
-and then follow the run the following commands in the terminal.
+First of all clone the repo from the link: https://github.com/lovingyugs/fb_profile.git
+and then use the following commands on the terminal.
 ####
     cd fb_proflie
     npm install   (this will install the package.json file)
