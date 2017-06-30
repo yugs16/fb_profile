@@ -1,6 +1,8 @@
 # fb_profile
 A simple app shows some fb profile details and login count. (Based on NodeJS, ExpressJS and  MongoDB).
 
+Important Files: server.js, routes.js, index.html, profile.html, index.js, package.json
+
 ### Requirements
 ####
 	npm @4.4.1
